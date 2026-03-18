@@ -10,7 +10,7 @@ export function customerReducer(state = initialStateCustomer, action) {
 		case "customer/createCustomer":
 			return {
 				...state,
-				fullName: action.payload.fullName,
+				fullName: action.payload.fullName, // take fullName from payload
 				nationalID: action.payload.nationalID,
 				createdAt: action.payload.createdAt,
 			};
