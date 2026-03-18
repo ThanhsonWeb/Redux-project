@@ -17,7 +17,7 @@ function AccountOperations() {
 		dispatch(deposit(depositAmount));
 		setDepositAmount("");
 	}
-	// b2 : read data (accountSlice) from the store
+	// b2 : useSelector to read data account(reducer 1) from the store
 	const {
 		loan: currentLoan,
 		loanPurpose: currentLoanPurpose,
@@ -42,8 +42,6 @@ function AccountOperations() {
 		dispatch(payLoan());
 	}
 
-
-	// hello my name í sone welcome to the channel
 	return (
 		<div>
 			<h2>Your account operations</h2>

@@ -5,13 +5,11 @@ function Customer() {
 	const [fullName, setFullName] = useState("");
 	const [nationalId, setNationalId] = useState("");
 
-	//   b1 useDispatch()
 	const dispatch = useDispatch();
 
 	function handleClick() {
 		if (!fullName || !nationalId) return;
-		// pass Name and ID as a parameter to this function
-		// send it by using dispatch
+		// pass 2 state to this function as parameter
 		dispatch(createCustomer(fullName, nationalId));
 	}
 
@@ -19,7 +17,7 @@ function Customer() {
 		<div>
 			<h2>Create new customer</h2>
 			<div className="inputs">
-				{/* 1 state to store name */}
+				{/* fullname */}
 				<div>
 					<label>Customer full name</label>
 					<input
@@ -27,9 +25,9 @@ function Customer() {
 						onChange={(e) => setFullName(e.target.value)}
 					/>
 				</div>
+				{/* national id */}
 				<div>
 					<label>National ID</label>
-					{/* 1 state to store ID  */}
 					<input
 						value={nationalId}
 						onChange={(e) => setNationalId(e.target.value)}
