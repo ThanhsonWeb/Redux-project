@@ -1,14 +1,15 @@
-import { applyMiddleware, createStore, combineReducers } from "redux";
-import {thunk }from "redux-thunk";
+// b2 :import 
+import { configureStore } from "@reduxjs/toolkit";
+
 import { accountReducer } from "./features/account/accountSlice";
 import { customerReducer } from "./features/customers/customerSlice";
-
-const rootReducer = combineReducers({
-	account: accountReducer,
-	customer: customerReducer,
+// b1 : npm i @reduxjs/toolkit --force
+// b3 :  call configureStore and wrap 2 reducers ! 
+const store = configureStore({
+	reducer: {
+		account: accountReducer,
+		customer: customerReducer,
+	},
 });
-// we want to use thunk middleware  in our app 
-
-const store = createStore(rootReducer, applyMiddleware(thunk));
 
 export default store;
