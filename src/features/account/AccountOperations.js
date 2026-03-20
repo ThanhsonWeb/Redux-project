@@ -12,11 +12,6 @@ function AccountOperations() {
 	// b1 : useDispatch
 	const dispatch = useDispatch();
 
-	function handleDeposit() {
-		if (!depositAmount) return;
-		dispatch(deposit(depositAmount));
-		setDepositAmount("");
-	}
 	// b2 : useSelector to read data account(reducer 1) from the store
 	const {
 		loan: currentLoan,
@@ -24,6 +19,12 @@ function AccountOperations() {
 		balance,
 	} = useSelector((store) => store.account);
 	console.log(balance);
+
+	function handleDeposit() {
+		if (!depositAmount) return;
+		dispatch(deposit(depositAmount, currency));
+		setDepositAmount("");
+	}
 
 	function handleWithdrawal() {
 		if (!withdrawalAmount) return;
@@ -61,7 +62,6 @@ function AccountOperations() {
 						<option value="USD">US Dollar</option>
 						<option value="EUR">Euro</option>
 						<option value="GBP">British Pound</option>
-						<option value="exaMPLE">Vnd</option>
 					</select>
 
 					<button onClick={handleDeposit}>Deposit {depositAmount}</button>

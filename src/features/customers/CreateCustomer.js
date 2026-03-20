@@ -19,7 +19,7 @@ function Customer() {
 			<div className="inputs">
 				{/* fullname */}
 				<div>
-					<label>Customer full name</label>
+					<label>Customer full name</label>lanchry
 					<input
 						value={fullName}
 						onChange={(e) => setFullName(e.target.value)}
