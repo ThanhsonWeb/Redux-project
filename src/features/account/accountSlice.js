@@ -10,7 +10,7 @@ const accountSlice = createSlice({
 	name: "account",
 	initialState,
 	reducers: {
-		// reducer 1 
+		// reducer 1
 		deposit(state, action) {
 			// U can mutates inside reducers
 			state.balance += action.payload;
@@ -20,10 +20,18 @@ const accountSlice = createSlice({
 			state.balance -= action.payload;
 		},
 		// reducer 3
-		requestLoan(state, action) {
-			if (state.loan > 0) return;
-			state.loan = action.payload.amount;
-			state.loanPurpose = action.payload.purpose;
+		requestLoan: {
+			prepare(amount, purpose) {
+				return {
+					payload: { amount, purpose },
+				};
+			},
+
+			reducer(state, action) {
+				if (state.loan > 0) return;
+				state.loan = action.payload.amount;
+				state.loanPurpose = action.payload.purpose;
+			},
 		},
 		// reducer 4
 		payLoan(state, action) {
@@ -37,37 +45,9 @@ const accountSlice = createSlice({
 console.log(accountSlice);
 export const { deposit, withdraw, requestLoan, payLoan } = accountSlice.actions;
 
-console.log(requestLoan(1000, "buy a car"))
+console.log(requestLoan(1000, "buy a car"));
 
 export const accountReducer = accountSlice.reducer;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // export function accountReducer(state = initialState, action) {
 // 	switch (action.type) {
